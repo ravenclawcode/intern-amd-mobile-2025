@@ -46,7 +46,11 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
     final provider = Provider.of<TransactionProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text(widget.data == null ? "Tambah Transaksi" : "Edit Transaksi")),
+      appBar: AppBar(
+        title: Text(
+          widget.data == null ? "Tambah Transaksi" : "Edit Transaksi",
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Form(
@@ -68,7 +72,10 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
                 initialValue: type,
                 items: [
                   DropdownMenuItem(value: "income", child: Text("Pemasukan")),
-                  DropdownMenuItem(value: "expense", child: Text("Pengeluaran")),
+                  DropdownMenuItem(
+                    value: "expense",
+                    child: Text("Pengeluaran"),
+                  ),
                 ],
                 onChanged: (v) {
                   setState(() => type = v.toString());
@@ -77,8 +84,7 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
               SizedBox(height: 20),
 
               // Gambar
-              if (imagePath != null)
-                Image.file(File(imagePath!), height: 150),
+              if (imagePath != null) Image.file(File(imagePath!), height: 150),
 
               TextButton.icon(
                 icon: Icon(Icons.image),
@@ -92,7 +98,9 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     final trx = TransactionModel(
-                      id: widget.data?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+                      id:
+                          widget.data?.id ??
+                          DateTime.now().millisecondsSinceEpoch.toString(),
                       description: descC.text,
                       amount: int.parse(amountC.text),
                       type: type,
@@ -109,7 +117,7 @@ class _TransactionFormScreenState extends State<TransactionFormScreen> {
                     Navigator.pop(context);
                   }
                 },
-              )
+              ),
             ],
           ),
         ),

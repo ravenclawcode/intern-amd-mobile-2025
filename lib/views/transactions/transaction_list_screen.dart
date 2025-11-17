@@ -75,19 +75,21 @@ class TransactionListScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 15),
-            trx.transactions.isEmpty
-                ? Center(child: Text("Belum ada transaksi"))
-                : Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: trx.transactions.length,
-                      itemBuilder: (_, i) {
-                        return TransactionItem(trx.transactions[i]);
-                      },
+            Expanded(
+              child: trx.transactions.isEmpty
+                  ? Center(child: Text("Belum ada transaksi"))
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: trx.transactions.length,
+                        itemBuilder: (_, i) {
+                          return TransactionItem(trx.transactions[i]);
+                        },
+                      ),
                     ),
-                  ),
+            ),
           ],
         ),
       ),
