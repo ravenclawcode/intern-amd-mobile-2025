@@ -170,7 +170,7 @@ class DashboardScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Saldo Akhir',
+                              'Selisih Total',
                               style: TextStyle(
                                 fontSize: 12,
                                 color: Color(0xFFFFFFFF),

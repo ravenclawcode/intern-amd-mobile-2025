@@ -16,7 +16,9 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => TransactionProvider()..loadData()),
+        ChangeNotifierProvider(
+          create: (_) => TransactionProvider()..loadData(),
+        ),
       ],
       child: MyApp(onboardingDone: onboardingDone),
     ),
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: Color(0xffFFFFFF)),
       debugShowCheckedModeBanner: false,
       home: onboardingDone ? DashboardScreen() : OnboardingScreen(),
       routes: {
